@@ -7,7 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mediscreen_gui.model.Patient;
-import com.mediscreen_gui.service.PatientService;
+import com.mediscreen_gui.proxies.PatientProxy;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ public class PatientControllerTest {
   private MockMvc mockMvc;
 
   @MockBean
-  private PatientService patientServiceMock;
+  private PatientProxy patientProxyMock;
 
 
   @Test
@@ -42,7 +42,7 @@ public class PatientControllerTest {
     List<Patient> patients = new ArrayList<>();
     patients.add(patient);
 
-    when(patientServiceMock.getPatients()).thenReturn(patients);
+    when(patientProxyMock.getPatients()).thenReturn(patients);
 
     mockMvc.perform(get("/patient/list"))
         .andExpect(status().isOk()).andExpect(view().name("patient/list"));
@@ -64,8 +64,8 @@ public class PatientControllerTest {
     List<Patient> patients = new ArrayList<>();
     patients.add(patient);
 
-    when(patientServiceMock.savePatient(patient)).thenReturn(patient);
-    when(patientServiceMock.getPatients()).thenReturn(patients);
+    when(patientProxyMock.createPatient(patient)).thenReturn(patient);
+    when(patientProxyMock.getPatients()).thenReturn(patients);
 
     MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/patient/validate")
         .contentType(MediaType.APPLICATION_JSON_VALUE).accept(MediaType.APPLICATION_JSON).characterEncoding("UTF-8")
@@ -82,7 +82,7 @@ public class PatientControllerTest {
     patient.setBirthdate("05/08/1949");
     patient.setGenre("Man");
 
-    when(patientServiceMock.getPatient(1)).thenReturn(patient);
+    when(patientProxyMock.getPatient(1)).thenReturn(patient);
 
     mockMvc.perform(get("/patient/update/{id}", "1"))
         .andExpect(status().isOk()).andExpect(view().name("patient/update"));
@@ -99,8 +99,8 @@ public class PatientControllerTest {
     List<Patient> patients = new ArrayList<>();
     patients.add(patient);
 
-    doNothing().when(patientServiceMock).updatePatient(1, patient);
-    when(patientServiceMock.getPatients()).thenReturn(patients);
+    doNothing().when(patientProxyMock).updatePatient(1, patient);
+    when(patientProxyMock.getPatients()).thenReturn(patients);
 
     MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/patient/update/{id}", "1")
         .contentType(MediaType.APPLICATION_JSON_VALUE)

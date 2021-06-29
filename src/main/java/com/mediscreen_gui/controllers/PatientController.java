@@ -1,7 +1,7 @@
 package com.mediscreen_gui.controllers;
 
 import com.mediscreen_gui.model.Patient;
-import com.mediscreen_gui.service.PatientService;
+import com.mediscreen_gui.proxies.PatientProxy;
 import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,13 +20,13 @@ public class PatientController {
   private static final Logger logger = LogManager.getLogger(PatientController.class);
 
   @Autowired
-  private PatientService patientService;
+  private PatientProxy patientProxy;
 
   @RequestMapping("/patient/list")
   public String home(Model model) {
     logger.info(
         "request of the endpoint '/patient/list'");
-    model.addAttribute("patients", patientService.getPatients());
+    model.addAttribute("patients", patientProxy.getPatients());
     return "patient/list";
   }
 
@@ -42,8 +42,8 @@ public class PatientController {
     logger.info(
         "request of the endpoint '/patient/validate'");
     if (!result.hasErrors()) {
-      patientService.savePatient(patient);
-      model.addAttribute("patients", patientService.getPatients());
+      patientProxy.createPatient(patient);
+      model.addAttribute("patients", patientProxy.getPatients());
       return "redirect:/patient/list";
     }
     return "patient/add";
@@ -53,7 +53,7 @@ public class PatientController {
   public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
     logger.info(
         "GET request of the endpoint '/patient/update/{id}'");
-    Patient patient = patientService.getPatient(id);
+    Patient patient = patientProxy.getPatient(id);
     model.addAttribute("patient", patient);
     return "patient/update";
   }
@@ -64,8 +64,8 @@ public class PatientController {
     logger.info(
         "POST request of the endpoint '/patient/update/{id}'");
     if (!result.hasErrors()) {
-      patientService.updatePatient(id, patient);
-      model.addAttribute("patients", patientService.getPatients());
+      patientProxy.updatePatient(id, patient);
+      model.addAttribute("patients", patientProxy.getPatients());
       return "redirect:/patient/list";
     }
     return "/patient/update";
