@@ -1,0 +1,13 @@
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/controllers/HomeController.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/controllers/PatientRestController.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/service/PatientServiceImpl.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/configuration/WebSecurityConfig.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/controllers/PatientController.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/model/AuthenticationRequest.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/exceptions/NonexistentException.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/MediscreenApplication.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/exceptions/IsForbiddenException.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/service/PatientService.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/model/Patient.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/repositories/PatientRepository.java
+/home/adrien/Documents/OCR/java/projet9/Mediscreen/src/main/java/com/mediscreen/model/AuthenticationResponse.java

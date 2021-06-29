@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientRestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mediscreen</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.controllers</a> &gt; <span class="el_source">PatientRestController.java</span></div><h1>PatientRestController.java</h1><pre class="source lang-java linenums">package com.mediscreen.controllers;
+
+import com.mediscreen.exceptions.NonexistentException;
+import com.mediscreen.model.Patient;
+import com.mediscreen.service.PatientService;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+<span class="fc" id="L19">public class PatientRestController {</span>
+
+<span class="fc" id="L21">  private static final Logger logger = LogManager.getLogger(PatientRestController.class);</span>
+
+  @Autowired
+  private PatientService patientService;
+
+
+  /**
+   * Read - Get all patients
+   * 
+   * @return - An Iterable object of patients full filled
+   */
+  @GetMapping(&quot;/patients&quot;)
+  public List&lt;Patient&gt; getPatients() {
+<span class="fc" id="L34">    List&lt;Patient&gt; patientList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L35">    logger.info(&quot;Get request with the endpoint 'patients'&quot;);</span>
+<span class="fc" id="L36">    patientList = patientService.getPatients();</span>
+<span class="fc" id="L37">    logger.info(</span>
+        &quot;response following the GET on the endpoint 'patients'.&quot;);
+<span class="fc" id="L39">    return patientList;</span>
+  }
+
+
+  /**
+   * Add a new patient
+   * 
+   * @param patient An object patient
+   * @return The patient object saved
+   */
+  @PostMapping(&quot;/patient&quot;)
+  public Patient createPatient(@RequestBody Patient patient) {
+<span class="fc" id="L51">    Patient newPatient = null;</span>
+<span class="fc" id="L52">    logger.info(&quot;Post request with the endpoint 'patient'&quot;);</span>
+<span class="fc" id="L53">    newPatient = patientService.savePatient(patient);</span>
+<span class="fc" id="L54">    logger.info(</span>
+        &quot;response following the Post on the endpoint 'patient' with the given patient : {&quot;
+<span class="fc" id="L56">            + patient.toString() + &quot;}&quot;);</span>
+<span class="fc" id="L57">    return newPatient;</span>
+  }
+
+
+  /**
+   * Update an existing patient from a given id
+   * 
+   * @param id      An id
+   * @param patient A patient object with modifications
+   * @return The updated patient object
+   */
+  @PutMapping(&quot;/patient/{id}&quot;)
+  public Patient updatePatient(@PathVariable(&quot;id&quot;) final Integer id,
+      @RequestBody Patient patient) {
+<span class="fc" id="L71">    Patient patientToUpdate = null;</span>
+<span class="fc" id="L72">    boolean existingPatientId = false;</span>
+<span class="fc" id="L73">    logger.info(</span>
+        &quot;Put request of the endpoint 'patient' with the id : {&quot; + id + &quot;}&quot;);
+<span class="fc" id="L75">    existingPatientId = patientService.patientExist(id);</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">    if (existingPatientId) {</span>
+<span class="fc" id="L77">      patientService.updatePatient(id, patient);</span>
+    }
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">    if (!existingPatientId) {</span>
+<span class="nc" id="L80">      logger.error(&quot;The patient with the id &quot; + id + &quot; doesn't exist.&quot;);</span>
+<span class="nc" id="L81">      throw new NonexistentException(&quot;The patient with the id &quot; + id + &quot; doesn't exist.&quot;);</span>
+    }
+<span class="fc" id="L83">    return patientToUpdate;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
