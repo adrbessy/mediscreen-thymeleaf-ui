@@ -24,7 +24,6 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>Id</th>
 					<th>First Name</th>
 					<th>Name</th>
 					<th>Birthdate</th>
@@ -36,7 +35,6 @@
 			</thead>
 			<tbody>
 				<tr th:each="patient : ${patients}">
-					<td style="width: 10%" th:text="${patient.id}"></td>
 					<td th:text="${patient.firstname}"></td>
 					<td th:text="${patient.name}"></td>
 					<td th:text="${patient.birthdate}"></td>
