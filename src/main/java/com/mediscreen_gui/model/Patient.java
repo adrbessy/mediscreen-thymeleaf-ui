@@ -1,6 +1,7 @@
 package com.mediscreen_gui.model;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,20 +13,22 @@ public class Patient {
 
   private Integer id;
 
-  @NotBlank(message = "First name is mandatory")
-  private String firstname;
+  @NotBlank(message = "Given name is mandatory")
+  private String given;
 
-  @NotBlank(message = "Name is mandatory")
-  private String name;
+  @NotBlank(message = "Family Name is mandatory")
+  private String family;
 
-  @NotBlank(message = "Birthdate is mandatory")
-  private String birthdate;
+  @Pattern(regexp = "^[0-9]{4}(-)[0-9]{2}(-)[0-9]{2}$", message = "The birthdate has to get this format yyyy-mm-dd")
 
-  @NotBlank(message = "Genre is mandatory")
-  private String genre;
+  private String dob;
 
-  private String postalAddress;
+  @NotBlank(message = "Sex is mandatory")
+  private String sex;
 
-  private String phoneNumber;
+  // postal address
+  private String address;
+
+  private String phone;
 
 }
