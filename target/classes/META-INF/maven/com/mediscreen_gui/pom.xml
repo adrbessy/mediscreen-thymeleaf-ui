@@ -244,9 +244,9 @@
                 <version>0.8.6</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/exception/*.class</exclude>
+                        <exclude>**/exceptions/*.class</exclude>
                         <exclude>**/configuration/*.class</exclude>
-                        <exclude>**/TourguideApplication.class</exclude>
+                        <exclude>**/Mediscreen_gui_Application.class</exclude>
                     </excludes>
                 </configuration>
                 <executions>

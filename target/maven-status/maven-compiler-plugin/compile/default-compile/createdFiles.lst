@@ -1,0 +1,10 @@
+com/mediscreen_gui/controllers/PatientController.class
+com/mediscreen_gui/exceptions/CustomErrorDecoder.class
+com/mediscreen_gui/configuration/WebSecurityConfig.class
+com/mediscreen_gui/controllers/HomeController.class
+com/mediscreen_gui/exceptions/NonexistentException.class
+com/mediscreen_gui/configuration/FeignExceptionConfig.class
+com/mediscreen_gui/Mediscreen_gui_Application.class
+com/mediscreen_gui/proxies/PatientProxy.class
+com/mediscreen_gui/model/Patient.class
+com/mediscreen_gui/exceptions/IsForbiddenException.class

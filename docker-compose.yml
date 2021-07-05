@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  mediscreen-gui:
+    image: mediscreen_gui:0.0.1
+    depends_on:
+      - mediscreen-patient
+    ports:
+      - "9009:9009"
+    networks: 
+      - backend
+    
+  mediscreen-patient:
+    image: mediscreen_patient:0.0.1
+    ports:
+      - "9010:9010"
+    networks: 
+      - backend
+
+networks:
+  backend:
+    driver: "bridge"

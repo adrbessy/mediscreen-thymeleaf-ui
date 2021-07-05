@@ -2,11 +2,9 @@ package com.mediscreen_gui.model;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@EqualsAndHashCode
 @Getter
 @Setter
 public class Patient {
@@ -20,7 +18,6 @@ public class Patient {
   private String family;
 
   @Pattern(regexp = "^[0-9]{4}(-)[0-9]{2}(-)[0-9]{2}$", message = "The birthdate has to get this format yyyy-mm-dd")
-
   private String dob;
 
   @NotBlank(message = "Sex is mandatory")
