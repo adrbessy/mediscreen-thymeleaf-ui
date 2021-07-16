@@ -9,11 +9,22 @@ services:
       - "9009:9009"
     networks: 
       - backend
+
+  mediscreen-angular-ui:
+    image: mediscreen-angular-ui:0.0.1
+    depends_on:
+      - mediscreen-patient
+    ports:
+      - "4200:4200"
+    networks: 
+      - backend
     
   mediscreen-patient:
     image: mediscreen-patient:0.0.1
     depends_on:
      - postgresqldb
+    environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresqldb:5432/mediscreen
     ports:
       - "9010:9010"
     networks: 
