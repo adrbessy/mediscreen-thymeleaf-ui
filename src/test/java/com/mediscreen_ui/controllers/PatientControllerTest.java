@@ -1,4 +1,4 @@
-package com.mediscreen_gui.controllers;
+package com.mediscreen_ui.controllers;
 
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
@@ -6,8 +6,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mediscreen_gui.model.Patient;
-import com.mediscreen_gui.proxies.PatientProxy;
+import com.mediscreen_ui.model.Patient;
+import com.mediscreen_ui.proxies.PatientProxy;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -64,7 +64,7 @@ public class PatientControllerTest {
     List<Patient> patients = new ArrayList<>();
     patients.add(patient);
 
-    when(patientProxyMock.createPatient(patient)).thenReturn(patient);
+    when(patientProxyMock.createPatient(patient)).thenReturn(true);
     when(patientProxyMock.getPatients()).thenReturn(patients);
 
     MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/patient/validate")

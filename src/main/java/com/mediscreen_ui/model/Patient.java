@@ -1,4 +1,4 @@
-package com.mediscreen_gui.model;
+package com.mediscreen_ui.model;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -17,7 +17,7 @@ public class Patient {
   @NotBlank(message = "Family Name is mandatory")
   private String family;
 
-  @Pattern(regexp = "^[0-9]{4}(-)[0-9]{2}(-)[0-9]{2}$", message = "The birthdate has to get this format yyyy-mm-dd")
+  @Pattern(regexp = "^[0-9]{4}(-)[0-9]{2}(-)[0-9]{2}$", message = "The correct format of the birthdate has to be in yyyy-mm-dd.")
   private String dob;
 
   @NotBlank(message = "Sex is mandatory")

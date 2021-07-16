@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-  mediscreen-gui:
-    image: mediscreen_gui:0.0.1
+  mediscreen-ui:
+    image: mediscreen-ui:0.0.1
     depends_on:
       - mediscreen-patient
     ports:
@@ -11,9 +11,22 @@ services:
       - backend
     
   mediscreen-patient:
-    image: mediscreen_patient:0.0.1
+    image: mediscreen-patient:0.0.1
+    depends_on:
+     - postgresqldb
     ports:
       - "9010:9010"
+    networks: 
+      - backend
+
+  postgresqldb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=medi
+      - POSTGRES_USER=adm_mediscreen
+      - POSTGRES_DB=mediscreen
     networks: 
       - backend
 

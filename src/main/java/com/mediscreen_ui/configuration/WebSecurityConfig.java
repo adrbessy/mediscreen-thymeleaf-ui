@@ -1,4 +1,4 @@
-package com.mediscreen_gui.configuration;
+package com.mediscreen_ui.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

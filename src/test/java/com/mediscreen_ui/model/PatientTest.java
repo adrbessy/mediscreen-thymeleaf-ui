@@ -1,4 +1,4 @@
-package com.mediscreen_gui.model;
+package com.mediscreen_ui.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;

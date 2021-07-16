@@ -1,4 +1,4 @@
-package com.mediscreen_gui.exceptions;
+package com.mediscreen_ui.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -10,10 +10,10 @@
 	</parent>
 
 	<groupId>com</groupId>
-	<artifactId>mediscreen_gui</artifactId>
+	<artifactId>mediscreen_ui</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mediscreen_gui</name>
-	<description>mediscreen_gui application with Spring Boot</description>
+	<name>mediscreen-thymeleaf-ui</name>
+	<description>mediscreen-thymeleaf-ui application with Spring Boot</description>
 	
 	<properties>
 		<java.version>1.8</java.version>
@@ -246,7 +246,7 @@
                     <excludes>
                         <exclude>**/exceptions/*.class</exclude>
                         <exclude>**/configuration/*.class</exclude>
-                        <exclude>**/Mediscreen_gui_Application.class</exclude>
+                        <exclude>**/Mediscreen_ui_Application.class</exclude>
                     </excludes>
                 </configuration>
                 <executions>

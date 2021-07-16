@@ -1,7 +1,7 @@
-package com.mediscreen_gui.controllers;
+package com.mediscreen_ui.controllers;
 
-import com.mediscreen_gui.model.Patient;
-import com.mediscreen_gui.proxies.PatientProxy;
+import com.mediscreen_ui.model.Patient;
+import com.mediscreen_ui.proxies.PatientProxy;
 import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

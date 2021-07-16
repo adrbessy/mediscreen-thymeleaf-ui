@@ -1,4 +1,4 @@
-package com.mediscreen_gui.exceptions;
+package com.mediscreen_ui.exceptions;
 
 import feign.Response;
 import feign.codec.ErrorDecoder;
