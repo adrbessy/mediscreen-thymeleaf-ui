@@ -64,7 +64,7 @@ public class PatientControllerTest {
     List<Patient> patients = new ArrayList<>();
     patients.add(patient);
 
-    when(patientProxyMock.createPatient(patient)).thenReturn(true);
+    when(patientProxyMock.createPatient(patient)).thenReturn("this patient has been saved.");
     when(patientProxyMock.getPatients()).thenReturn(patients);
 
     MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/patient/validate")

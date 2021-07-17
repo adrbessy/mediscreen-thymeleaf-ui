@@ -42,7 +42,13 @@ public class PatientController {
     logger.info(
         "request of the endpoint '/patient/validate'");
     if (!result.hasErrors()) {
-      patientProxy.createPatient(patient);
+      System.out.println("Hello there!");
+      String message = patientProxy.createPatient(patient);
+      if (message.equals("This patient already exists!")) {
+        model.addAttribute("patientAlreadyExists", true);
+        return "patient/add";
+      }
+      System.out.println("message : " + message);
       model.addAttribute("patients", patientProxy.getPatients());
       return "redirect:/patient/list";
     }
